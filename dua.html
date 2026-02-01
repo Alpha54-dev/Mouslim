@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="fr" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dua Guide - Votre guide des invocations islamiques</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --vert-islamique: #0a5c36;
+            --vert-clair: #1a936f;
+            --bleu-mosquee: #2a4b8c;
+            --bleu-clair: #5d8bf4;
+            --blanc-casse: #f8f5f0;
+            --or: #d4af37;
+            --gris-clair: #e9e9e9;
+            --texte: #333333;
+            --bordure: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--texte);
+            background-color: var(--blanc-casse);
+            direction: rtl;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* En-tête */
+        header {
+            background: linear-gradient(135deg, var(--vert-islamique) 0%, var(--bleu-mosquee) 100%);
+            color: white;
+            padding: 1.2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Section Dua du jour */
+        .dua-jour {
+            padding: 3rem 0;
+            background-color: white;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            border-top: 5px solid var(--or);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--vert-islamique);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--or), var(--vert-clair));
+        }
+
+        .dua-arabe {
+            font-size: 1.8rem;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--vert-islamique);
+            line-height: 1.8;
+            font-family: 'Traditional Arabic', 'Scheherazade', serif;
+        }
+
+        .dua-transcription {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin: 1rem 0;
+            direction: ltr;
+        }
+
+        .dua-traduction {
+            background-color: var(--gris-clair);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-right: 4px solid var(--bleu-clair);
+        }
+
+        .dua-details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .dua-source, .dua-usage {
+            background: #f0f7ff;
+            padding: 10px 15px;
+            border-radius: 6px;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .dua-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .btn-partage {
+            background-color: var(--bleu-clair);
+            color: white;
+        }
+
+        .btn-favori {
+            background-color: var(--vert-clair);
+            color: white;
+        }
+
+        .btn-audio {
+            background-color: var(--or);
+            color: white;
+        }
+
+        .btn-categorie {
+            background-color: var(--vert-islamique);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-pdf {
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0.9;
+        }
+
+        /* Section Catégories */
+        .categories {
+            padding: 3rem 0;
+            background-color: var(--blanc-casse);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 30px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--texte);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--or);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--vert-islamique);
+            margin-bottom: 1rem;
+        }
+
+        .category-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--bleu-mosquee);
+        }
+
+        .category-card p {
+            color: #666;
+            flex-grow: 1;
+        }
+
+        /* Section Dua par catégorie */
+        .dua-category {
+            padding: 2rem 0;
+        }
+
+        .dua-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 30px;
+        }
+
+        .dua-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border-right: 3px solid var(--vert-clair);
+        }
+
+        .dua-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .dua-item-title {
+            color: var(--vert-islamique);
+            font-size: 1.2rem;
+        }
+
+        .dua-item-badge {
+            background: var(--bleu-clair);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Section Recherche */
+        .recherche-rapide {
+            padding: 2rem 0;
+            background-color: white;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            background-color: var(--blanc-casse);
+        }
+
+        #searchBtn {
+            background-color: var(--vert-islamique);
+            color: white;
+            border: none;
+            padding: 0 1.8rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* Section Téléchargements PDF */
+        .telechargements {
+            padding: 3rem 0;
+            background-color: white;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 30px;
+        }
+
+        .pdf-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--bordure);
+            transition: transform 0.3s;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .pdf-icon {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .pdf-info {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gris-clair);
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--vert-islamique);
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--or);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: var(--vert-islamique);
+                width: 100%;
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .dua-arabe {
+                font-size: 1.4rem;
+            }
+            
+            .dua-details {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .categories-grid, .pdf-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .dua-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .dua-actions {
+                justify-content: center;
+            }
+        }
+
+        /* Animation pour le dua du jour */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .dua-jour .card {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        /* Style pour les icônes */
+        i {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-book-quran"></i> Dua Guide</h1>
+                <p>Votre compagnon spirituel quotidien</p>
+            </div>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#accueil" class="active">Accueil</a></li>
+                    <li><a href="#categories">Catégories</a></li>
+                    <li><a href="#audio-coran">Audio Coran</a></li>
+                    <li><a href="#videos-preche">Vidéos</a></li>
+                    <li><a href="#recherche">Recherche</a></li>
+                    <li><a href="#pdf-section">PDF</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Section Dua du jour -->
+    <section id="accueil" class="dua-jour">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-star"></i> Dua du jour</h2>
+            <div class="card">
+                <div class="dua-arabe" id="duaArabe">
+                    اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ
+                </div>
+                <div class="dua-transcription" id="duaTranscription">
+                    Allāhumma bika aṣbaḥnā, wa bika amsaynā, wa bika naḥyā, wa bika namūtu, wa ilayka an-nushūr.
+                </div>
+                <div class="dua-traduction">
+                    <h3>Traduction :</h3>
+                    <p id="duaTraduction">"Ô Allah, par Toi nous atteignons le matin, par Toi nous atteignons le soir, par Toi nous vivons, par Toi nous mourons, et vers Toi est le retour."</p>
+                </div>
+                <div class="dua-details">
+                    <div class="dua-source" id="duaSource">
+                        <strong>Source :</strong> Rapporté par At-Tirmidhi (n°3391) et Abû Dâwud (n°5068)
+                    </div>
+                    <div class="dua-usage" id="duaUsage">
+                        <strong>Usage :</strong> À réciter matin et soir
+                    </div>
+                </div>
+                <div class="dua-actions">
+                    <button class="btn btn-partage" id="partagerBtn"><i class="fas fa-share-alt"></i> Partager</button>
+                    <button class="btn btn-favori" id="favoriBtn"><i class="fas fa-heart"></i> Ajouter aux favoris</button>
+                    <button class="btn btn-audio" id="audioBtn"><i class="fas fa-volume-up"></i> Écouter</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Catégories -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-list"></i> Catégories de Dua</h2>
+            <div class="categories-grid">
+                <a href="#matin" class="category-card" data-category="matin">
+                    <div class="category-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h3>Dua du matin</h3>
+                    <p>8 invocations pour commencer la journée avec bénédictions et protection</p>
+                    <div class="btn btn-categorie" style="margin-top: 15px;">Voir les 8 invocations</div>
+                </a>
+                
+                <a href="#soir" class="category-card" data-category="soir">
+                    <div class="category-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Dua du soir</h3>
+                    <p>8 invocations pour la nuit et avant de dormir</p>
+                    <div class="btn btn-categorie" style="margin-top: 15px;">Voir les 8 invocations</div>
+                </a>
+                
+                <a href="#priere" class="category-card" data-category="priere">
+                    <div class="category-icon">
+                        <i class="fas fa-hands-praying"></i>
+                    </div>
+                    <h3>Dua pour la prière</h3>
+                    <p>7 invocations avant, pendant et après la prière</p>
+                    <div class="btn btn-categorie" style="margin-top: 15px;">Voir les 7 invocations</div>
+                </a>
+                
+                <a href="#repas" class="category-card" data-category="repas">
+                    <div class="category-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Dua pour les repas</h3>
+                    <p>7 invocations avant et après avoir mangé</p>
+                    <div class="btn btn-categorie" style="margin-top: 15px;">Voir les 7 invocations</div>
+                </a>
+                
+                <a href="#voyage" class="category-card" data-category="voyage">
+                    <div class="category-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Dua pour le voyage</h3>
+                    <p>7 invocations pour le départ et le retour</p>
+                    <div class="btn btn-categorie" style="margin-top: 15px;">Voir les 7 invocations</div>
+                </a>
+                
+                <a href="#divers" class="category-card" data-category="divers">
+                    <div class="category-icon">
+                        <i class="fas fa-star-and-crescent"></i>
+                    </div>
+                    <h3>Dua divers</h3>
+                    <p>8 invocations pour différentes occasions de la vie</p>
+                    <div class="btn btn-categorie" style="margin-top: 15px;">Voir les 8 invocations</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Dua du Matin (8 Dua) -->
+    <section id="matin" class="dua-category">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-sun"></i> Dua du Matin (8 Invocations)</h2>
+            <div class="dua-list">
+                <!-- Dua 1 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">1. Dua au réveil</h3>
+                        <span class="dua-item-badge">Essentiel</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Al-hamdu lillāhi alladhī aḥyānā baʿda mā amātanā wa-ilayhi an-nushūr.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Louange à Allah qui nous a rendu la vie après nous avoir donné la mort (le sommeil) et c'est vers Lui que sera la résurrection."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Sahîh Al-Bukhârî (n°6312)
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> À réciter juste après le réveil
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 2 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">2. Protection matinale complète</h3>
+                        <span class="dua-item-badge">Protection</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Aṣbaḥnā wa-aṣbaḥa al-mulku lillāhi, wal-ḥamdu lillāhi, lā ilāha illā Allāhu waḥdahu lā sharīka lahu.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Nous atteignons le matin et la souveraineté appartient à Allah. La louange est à Allah. Nulle divinité [véritable] en dehors d'Allah, l'Unique, sans associé."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Rapporté par Muslim (n°2723)
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> À réciter chaque matin
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 3 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">3. Demande de pardon matinale</h3>
+                        <span class="dua-item-badge">Pardon</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Astaghfirullāha al-ʿaẓīma alladhī lā ilāha illā huwa al-ḥayyu al-qayyūmu wa atūbu ilayhi.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Je demande pardon à Allah le Très Grand, il n'y a de divinité digne d'adoration que Lui, Le Vivant, Celui qui subsiste par Lui-même, et je me repens à Lui."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Abû Dâwud, At-Tirmidhî
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Au réveil, pour commencer la journée purifié
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 4 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">4. Protection contre le mal</h3>
+                        <span class="dua-item-badge">Protection</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ كُلِّ دَابَّةٍ أَنْتَ آخِذٌ بِنَاصِيَتِهَا
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Allāhumma innī aʿūdhu bika min sharri nafsī wa min sharri kulli dābbatin anta ākhidhun bināṣiyatihā.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Ô Allah, je cherche refuge auprès de Toi contre le mal de mon âme et contre le mal de toute créature dont Tu tiens la mèche frontale."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> At-Tirmidhî
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Protection générale pour la journée
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 5 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">5. Demande de bonne santé</h3>
+                        <span class="dua-item-badge">Santé</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Allāhumma ʿāfinī fī badanī, allāhumma ʿāfinī fī samʿī, allāhumma ʿāfinī fī baṣarī.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Ô Allah, préserve ma santé dans mon corps, préserve mon ouïe, préserve ma vue."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Rapporté par Abû Dâwud
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Pour la préservation de la santé
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 6 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">6. Demande de subsistance licite</h3>
+                        <span class="dua-item-badge">Subsistance</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Allāhumma innī as'aluka ʿilman nāfiʿan wa rizqan ṭayyiban wa ʿamalan mutaqabbalan.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Ô Allah, je Te demande une science bénéfique, une subsistance pure et une œuvre agréée."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Ibn Mâjah
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Pour la réussite dans les affaires quotidiennes
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 7 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">7. Dhikr matinal</h3>
+                        <span class="dua-item-badge">Dhikr</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        سُبْحَانَ اللَّهِ وَبِحَمْدِهِ عَدَدَ خَلْقِهِ وَرِضَا نَفْسِهِ وَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Subḥānallāhi wa biḥamdihi ʿadada khalqihi wa riḍā nafsihi wa zinata ʿarshihi wa midāda kalimātihi.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Gloire et louange à Allah, autant que le nombre de Ses créatures, autant qu'Il en est satisfait, autant que le poids de Son Trône et autant que l'encre de Ses paroles."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Muslim
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Dhikr du matin
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 8 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">8. Protection pour la famille et les biens</h3>
+                        <span class="dua-item-badge">Famille</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذَا الْيَوْمِ فَتْحَهُ وَنَصْرَهُ وَنُورَهُ وَبَرَكَتَهُ وَهُدَاهُ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Allāhumma innī as'aluka khayra hādhā al-yawmi fatḥahu wa naṣrahu wa nūrahu wa barakatahu wa hudāhu.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Ô Allah, je Te demande les biens de ce jour, son ouverture, sa victoire, sa lumière, sa bénédiction et sa guidée."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Abû Dâwud
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Pour une journée bénie
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Dua du Soir (8 Dua) -->
+    <section id="soir" class="dua-category" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-moon"></i> Dua du Soir (8 Invocations)</h2>
+            <div class="dua-list">
+                <!-- Dua 1 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">1. Dua du soir</h3>
+                        <span class="dua-item-badge">Essentiel</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Amsaynā wa-amsā al-mulku lillāhi, wal-ḥamdu lillāhi, lā ilāha illā Allāhu waḥdahu lā sharīka lahu.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Nous atteignons le soir et la souveraineté appartient à Allah. La louange est à Allah. Nulle divinité [véritable] en dehors d'Allah, l'Unique, sans associé."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Rapporté par Muslim (n°2723)
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> À réciter chaque soir
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 2 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">2. Avant de dormir</h3>
+                        <span class="dua-item-badge">Nuit</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        بِاسْمِكَ رَبِّ وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، إِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Bismika rabbī waḍaʿtu janbī, wa bika arfaʿuhu, in amsakta nafsī farḥamhā, wa in arsaltahā faḥfaẓhā bimā taḥfaẓu bihi ʿibādaka aṣ-ṣāliḥīn.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "En Ton nom, mon Seigneur, je me couche et en Ton nom je me lève. Si Tu reprends mon âme, fais-lui miséricorde et si Tu la renvoies [dans mon corps], préserve-la comme Tu préserves Tes serviteurs vertueux."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Sahîh Al-Bukhârî (n°6320) et Muslim (n°2714)
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Avant de dormir
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 3 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">3. Protection nocturne</h3>
+                        <span class="dua-item-badge">Protection</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Allāhumma qinī ʿadhābaka yawma tabʿathu ʿibādaka.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Ô Allah, préserve-moi de Ton châtiment le jour où Tu ressusciteras Tes serviteurs."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Abû Dâwud, At-Tirmidhî
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Réciter 3 fois avant de dormir
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 4 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">4. Dua contre les cauchemars</h3>
+                        <span class="dua-item-badge">Protection</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ غَضَبِهِ وَعِقَابِهِ وَشَرِّ عِبَادِهِ وَمِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَنْ يَحْضُرُونِ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Aʿūdhu bikalimātillāhi at-tāmmāti min ghaḍabihi wa ʿiqābihi wa sharri ʿibādihi wa min hamazāti ash-shayāṭīni wa an yaḥḍurūn.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Je cherche refuge auprès des paroles parfaites d'Allah contre Sa colère, Son châtiment, le mal de Ses serviteurs, contre les suggestions des diables et contre qu'ils ne soient présents."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Abû Dâwud
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> En cas de cauchemar ou avant de dormir
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 5 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">5. Dernière parole avant le sommeil</h3>
+                        <span class="dua-item-badge">Essentiel</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلَهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Subḥānallāhi wal-ḥamdu lillāhi wa lā ilāha illā Allāhu wallāhu akbar.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Gloire à Allah, louange à Allah, il n'y a de divinité digne d'adoration qu'Allah, Allah est le plus grand."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> At-Tirmidhî
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Réciter 33 fois avant de dormir
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 6 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">6. Dua pour un sommeil paisible</h3>
+                        <span class="dua-item-badge">Paix</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Allāhumma bismika amūtu wa aḥyā.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Ô Allah, c'est en Ton nom que je meurs et que je vis."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Al-Bukhârî
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> En se couchant
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 7 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">7. Demande de pardon du soir</h3>
+                        <span class="dua-item-badge">Pardon</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَعَافِنِي وَاهْدِنِي وَارْزُقْنِي
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Allāhumma ighfir lī warḥamnī wa ʿāfinī wahdinī warzuqnī.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Ô Allah, pardonne-moi, fais-moi miséricorde, préserve-moi, guide-moi et accorde-moi ma subsistance."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> At-Tirmidhî
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> En se couchant, pour se purifier
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dua 8 -->
+                <div class="dua-item">
+                    <div class="dua-item-header">
+                        <h3 class="dua-item-title">8. Protection de la famille la nuit</h3>
+                        <span class="dua-item-badge">Famille</span>
+                    </div>
+                    <div class="dua-arabe" style="font-size: 1.5rem; text-align: right;">
+                        اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي
+                    </div>
+                    <div class="dua-transcription" style="text-align: right;">
+                        Allāhumma uḥfaznī min bayni yadayya wa min khalfī wa ʿan yamīnī wa ʿan shimālī wa min fawqī wa aʿūdhu biʿaẓamatika an ughtāla min taḥtī.
+                    </div>
+                    <div class="dua-traduction">
+                        <strong>Traduction :</strong> "Ô Allah, préserve-moi de devant, de derrière, de ma droite, de ma gauche et du dessus. Et je cherche refuge auprès de Ta Grandeur pour ne pas être surpris par en dessous."
+                    </div>
+                    <div class="dua-details">
+                        <div class="dua-source">
+                            <strong>Source :</strong> Abû Dâwud
+                        </div>
+                        <div class="dua-usage">
+                            <strong>Usage :</strong> Protection nocturne complète
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Audio du Coran -->
+    <section id="audio-coran" class="telechargements" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-quran"></i> Audio du Coran</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #666;">Écoutez les récitations du Saint Coran</p>
+            
+            <div class="pdf-grid">
+                <!-- Audio 1 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-volume-up" style="color: var(--vert-islamique);"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Sourate Al-Fatiha</h3>
+                    <p>La sourate d'ouverture du Coran, récitée par Sheikh Mishary Rashid Alafasy</p>
+                    <div class="pdf-info">
+                        <p><strong>Durée :</strong> 1:12</p>
+                        <p><strong>Récitateur :</strong> Alafasy</p>
+                        <p><strong>Type :</strong> Murattal</p>
+                    </div>
+                    <div class="dua-actions" style="margin-top: 15px; justify-content: center;">
+                        <button class="btn btn-audio" data-audio="fatiha.mp3">
+                            <i class="fas fa-play"></i> Écouter
+                        </button>
+                        <button class="btn btn-pdf" data-download="fatiha.mp3" style="background-color: var(--vert-clair);">
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Audio 2 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-volume-up" style="color: var(--vert-islamique);"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Sourate Al-Baqarah</h3>
+                    <p>Les premiers versets de la plus longue sourate du Coran</p>
+                    <div class="pdf-info">
+                        <p><strong>Durée :</strong> 15:30</p>
+                        <p><strong>Récitateur :</strong> Saad Al-Ghamdi</p>
+                        <p><strong>Type :</strong> Tajweed</p>
+                    </div>
+                    <div class="dua-actions" style="margin-top: 15px; justify-content: center;">
+                        <button class="btn btn-audio" data-audio="baqarah.mp3">
+                            <i class="fas fa-play"></i> Écouter
+                        </button>
+                        <button class="btn btn-pdf" data-download="baqarah.mp3" style="background-color: var(--vert-clair);">
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Audio 3 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-volume-up" style="color: var(--vert-islamique);"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Sourate Ya-Sin</h3>
+                    <p>Le cœur du Coran, récitation émouvante</p>
+                    <div class="pdf-info">
+                        <p><strong>Durée :</strong> 8:45</p>
+                        <p><strong>Récitateur :</strong> Abdul Rahman Al-Sudais</p>
+                        <p><strong>Type :</strong> Murattal</p>
+                    </div>
+                    <div class="dua-actions" style="margin-top: 15px; justify-content: center;">
+                        <button class="btn btn-audio" data-audio="yasin.mp3">
+                            <i class="fas fa-play"></i> Écouter
+                        </button>
+                        <button class="btn btn-pdf" data-download="yasin.mp3" style="background-color: var(--vert-clair);">
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Audio 4 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-volume-up" style="color: var(--vert-islamique);"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Sourate Ar-Rahman</h3>
+                    <p>La sourate de la Miséricorde Divine</p>
+                    <div class="pdf-info">
+                        <p><strong>Durée :</strong> 6:20</p>
+                        <p><strong>Récitateur :</strong> Mahmoud Khalil Al-Husary</p>
+                        <p><strong>Type :</strong> Tajweed</p>
+                    </div>
+                    <div class="dua-actions" style="margin-top: 15px; justify-content: center;">
+                        <button class="btn btn-audio" data-audio="rahman.mp3">
+                            <i class="fas fa-play"></i> Écouter
+                        </button>
+                        <button class="btn btn-pdf" data-download="rahman.mp3" style="background-color: var(--vert-clair);">
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Audio 5 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-volume-up" style="color: var(--vert-islamique);"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Sourate Al-Mulk</h3>
+                    <p>Protection dans la tombe, récitation nocturne</p>
+                    <div class="pdf-info">
+                        <p><strong>Durée :</strong> 5:15</p>
+                        <p><strong>Récitateur :</strong> Muhammad Al-Luhaidan</p>
+                        <p><strong>Type :</strong> Murattal</p>
+                    </div>
+                    <div class="dua-actions" style="margin-top: 15px; justify-content: center;">
+                        <button class="btn btn-audio" data-audio="mulk.mp3">
+                            <i class="fas fa-play"></i> Écouter
+                        </button>
+                        <button class="btn btn-pdf" data-download="mulk.mp3" style="background-color: var(--vert-clair);">
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Audio 6 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-volume-up" style="color: var(--vert-islamique);"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Sourate Al-Kahf</h3>
+                    <p>Protection contre le Dajjal, à écouter le vendredi</p>
+                    <div class="pdf-info">
+                        <p><strong>Durée :</strong> 22:10</p>
+                        <p><strong>Récitateur :</strong> Abu Bakr Al-Shatri</p>
+                        <p><strong>Type :</strong> Tajweed</p>
+                    </div>
+                    <div class="dua-actions" style="margin-top: 15px; justify-content: center;">
+                        <button class="btn btn-audio" data-audio="kahf.mp3">
+                            <i class="fas fa-play"></i> Écouter
+                        </button>
+                        <button class="btn btn-pdf" data-download="kahf.mp3" style="background-color: var(--vert-clair);">
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+      
+    <!-- Section PDF -->
+    <section id="pdf-section" class="telechargements">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-download"></i> Téléchargements PDF</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #666;">Téléchargez nos compilations de dua organisées par catégories pour les consulter hors ligne</p>
+            
+            <div class="pdf-grid">
+                <!-- PDF 1 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">La vie du prophète PSL</h3>
+                    <p>Tous les choses a savoir sur notre prophète psl.</p>
+                    <div class="pdf-info">
+                        <p><strong>Format :</strong> PDF</p>
+                        <p><strong>Taille :</strong> 871 ko</p>
+                        <p><strong>Pages :</strong> 82</p>
+                    </div>
+                    <button class="btn btn-pdf" data-pdf="la vie du prophète PSL.pdf" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                </div>
+                
+                <!-- PDF 2 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Le Jugement Dernier</h3>
+                    <p>Tout a savoir sur le jours du jugement dernier.</p>
+                    <div class="pdf-info">
+                        <p><strong>Format :</strong> PDF</p>
+                        <p><strong>Taille :</strong> 5.64 MB</p>
+                        <p><strong>Pages :</strong> 290</p>
+                    </div>
+                    <button class="btn btn-pdf" data-pdf="Le jugement dernier.pdf" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                </div>
+                
+                <!-- PDF 3 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">A propos du jeune</h3>
+                    <p>Les règles du jeune pendant le mois de Ramadan.</p>
+                    <div class="pdf-info">
+                        <p><strong>Format :</strong> PDF</p>
+                        <p><strong>Taille :</strong> 0.91 Mo</p>
+                        <p><strong>Pages :</strong> 5 </p>
+                    </div>
+                    <button class="btn btn-pdf" data-pdf="le jeune de ramadhan.pdf" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                </div>
+                
+                <!-- PDF 4 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Sha'ban</h3>
+                    <p>Les mérites du mois de Sha'ban </p>
+                    <div class="pdf-info">
+                        <p><strong>Format :</strong> PDF</p>
+                        <p><strong>Taille :</strong> 249 ko</p>
+                        <p><strong>Pages :</strong> 5 </p>
+                    </div>
+                    <button class="btn btn-pdf" data-pdf="le mois de shaban.pdf" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                </div>
+                
+                <!-- PDF 5 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">At-Tawhit</h3>
+                    <p>At-Tawhit.</p>
+                    <div class="pdf-info">
+                        <p><strong>Format :</strong> PDF</p>
+                        <p><strong>Taille :</strong> 1.8 Mo</p>
+                        <p><strong>Pages :</strong> 275</p>
+                    </div>
+                    <button class="btn btn-pdf" data-pdf="Tawhid explication.pdf" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                </div>
+                
+                <!-- PDF 6 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">Les Dua du Vendredi</h3>
+                    <p>Dua Du Vendredi.</p>
+                    <div class="pdf-info">
+                        <p><strong>Format :</strong> PDF</p>
+                        <p><strong>Taille :</strong> 5.4 Mo</p>
+                        <p><strong>Pages :</strong> 45</p>
+                    </div>
+                    <button class="btn btn-pdf" data-pdf="dua-complet.pdf" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                </div>
+                
+                <!-- PDF 7 -->
+                <div class="pdf-card">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">La religion de vérité</h3>
+                    <p>La Religion Islamique.</p>
+                    <div class="pdf-info">
+                        <p><strong>Format :</strong> PDF</p>
+                        <p><strong>Taille :</strong> 2.4 Mo</p>
+                        <p><strong>Pages :</strong> 45</p>
+                    </div>
+                    <button class="btn btn-pdf" data-pdf="LA RELIGION De VERITE .pdf" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Section pour ajouter de nouveaux PDF (visible seulement pour l'admin) -->
+            <div id="admin-pdf-section" style="margin-top: 50px; display: none;">
+                <h3 class="section-title" style="font-size: 1.5rem;"><i class="fas fa-plus-circle"></i> Ajouter un nouveau PDF</h3>
+                <div class="pdf-card" style="background: #f8f9fa;">
+                    <div id="pdf-upload-area" style="text-align: center; padding: 2rem; border: 2px dashed #ddd; border-radius: 10px;">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 3rem; color: var(--bleu-clair); margin-bottom: 1rem;"></i>
+                        <p>Glissez-déposez un fichier PDF ici ou cliquez pour sélectionner</p>
+                        <input type="file" id="pdf-upload" accept=".pdf" style="display: none;">
+                        <button class="btn" id="select-pdf-btn" style="margin-top: 1rem; background: var(--vert-clair);">
+                            <i class="fas fa-file-upload"></i> Sélectionner un PDF
+                        </button>
+                    </div>
+                    <div id="pdf-details-form" style="display: none; margin-top: 1.5rem;">
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Titre du PDF</label>
+                            <input type="text" id="pdf-title" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: bold;">Description</label>
+                            <textarea id="pdf-description" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; height: 80px;"></textarea>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Taille (MB)</label>
+                                <input type="text" id="pdf-size" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Nombre de pages</label>
+                                <input type="text" id="pdf-pages" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                            </div>
+                        </div>
+                        <button class="btn" id="add-pdf-btn" style="background: var(--vert-islamique); color: white; width: 100%;">
+                            <i class="fas fa-plus"></i> Ajouter ce PDF au site
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Recherche -->
+    <section id="recherche" class="recherche-rapide">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-search"></i> Rechercher un Dua</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Rechercher un dua par mot-clé (matin, protection, repas...)">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="searchResults" style="margin-top: 20px;"></div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Dua Guide</h3>
+                    <p>Votre guide complet des invocations islamiques pour la vie quotidienne.</p>
+                    <p><i class="fas fa-mosque"></i> Que la paix et les bénédictions d'Allah soient sur vous.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#categories">Catégories</a></li>
+                        <li><a href="#audio-coran">Audio Coran</a></li>
+                        <li><a href="#videos-preche">Vidéos</a></li>
+                        <li><a href="#recherche">Recherche</a></li>
+                        <li><a href="#pdf-section">PDF</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Catégories</h3>
+                    <ul>
+                        <li><a href="#matin">Dua du matin</a></li>
+                        <li><a href="#soir">Dua du soir</a></li>
+                        <li><a href="#priere">Dua pour la prière</a></li>
+                        <li><a href="#repas">Dua pour les repas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Partager</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.9rem;">Partagez les bénédictions</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dua Guide. Tous droits réservés. | Conçu avec <i class="fas fa-heart" style="color: #ff6b6b;"></i> pour la communauté musulmane</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;"><button id="admin-toggle" style="background: none; border: none; color: #aaa; cursor: pointer;">Mode Admin</button></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Base de données des dua (complète avec plus de 40 dua)
+        const duaDatabase = [
+            // Dua du matin
+            {id: 1, arabe: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ النُّشُورُ", transcription: "Allāhumma bika aṣbaḥnā, wa bika amsaynā, wa bika naḥyā, wa bika namūtu, wa ilayka an-nushūr.", traduction: "Ô Allah, par Toi nous atteignons le matin, par Toi nous atteignons le soir, par Toi nous vivons, par Toi nous mourons, et vers Toi est le retour.", source: "At-Tirmidhi (n°3391)", usage: "À réciter matin et soir", categorie: "matin/soir"},
+            {id: 2, arabe: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ", transcription: "Aṣbaḥnā wa-aṣbaḥa al-mulku lillāhi, wal-ḥamdu lillāhi, lā ilāha illā Allāhu waḥdahu lā sharīka lahu.", traduction: "Nous atteignons le matin et la souveraineté appartient à Allah. La louange est à Allah. Nulle divinité [véritable] en dehors d'Allah, l'Unique, sans associé.", source: "Muslim (n°2723)", usage: "À réciter chaque matin", categorie: "matin"},
+            {id: 3, arabe: "الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ", transcription: "Al-hamdu lillāhi alladhī aḥyānā baʿda mā amātanā wa-ilayhi an-nushūr.", traduction: "Louange à Allah qui nous a rendu la vie après nous avoir donné la mort (le sommeil) et c'est vers Lui que sera la résurrection.", source: "Al-Bukhârî (n°6312)", usage: "À réciter juste après le réveil", categorie: "matin"},
+            {id: 4, arabe: "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ", transcription: "Astaghfirullāha al-ʿaẓīma alladhī lā ilāha illā huwa al-ḥayyu al-qayyūmu wa atūbu ilayhi.", traduction: "Je demande pardon à Allah le Très Grand, il n'y a de divinité digne d'adoration que Lui, Le Vivant, Celui qui subsiste par Lui-même, et je me repens à Lui.", source: "Abû Dâwud", usage: "Au réveil, pour commencer la journée purifié", categorie: "matin"},
+            {id: 5, arabe: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ شَرِّ نَفْسِي وَمِنْ شَرِّ كُلِّ دَابَّةٍ أَنْتَ آخِذٌ بِنَاصِيَتِهَا", transcription: "Allāhumma innī aʿūdhu bika min sharri nafsī wa min sharri kulli dābbatin anta ākhidhun bināṣiyatihā.", traduction: "Ô Allah, je cherche refuge auprès de Toi contre le mal de mon âme et contre le mal de toute créature dont Tu tiens la mèche frontale.", source: "At-Tirmidhî", usage: "Protection générale pour la journée", categorie: "matin"},
+            {id: 6, arabe: "اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي", transcription: "Allāhumma ʿāfinī fī badanī, allāhumma ʿāfinī fī samʿī, allāhumma ʿāfinī fī baṣarī.", traduction: "Ô Allah, préserve ma santé dans mon corps, préserve mon ouïe, préserve ma vue.", source: "Abû Dâwud", usage: "Pour la préservation de la santé", categorie: "matin"},
+            {id: 7, arabe: "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا", transcription: "Allāhumma innī as'aluka ʿilman nāfiʿan wa rizqan ṭayyiban wa ʿamalan mutaqabbalan.", traduction: "Ô Allah, je Te demande une science bénéfique, une subsistance pure et une œuvre agréée.", source: "Ibn Mâjah", usage: "Pour la réussite dans les affaires quotidiennes", categorie: "matin"},
+            {id: 8, arabe: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ عَدَدَ خَلْقِهِ وَرِضَا نَفْسِهِ وَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ", transcription: "Subḥānallāhi wa biḥamdihi ʿadada khalqihi wa riḍā nafsihi wa zinata ʿarshihi wa midāda kalimātihi.", traduction: "Gloire et louange à Allah, autant que le nombre de Ses créatures, autant qu'Il en est satisfait, autant que le poids de Son Trône et autant que l'encre de Ses paroles.", source: "Muslim", usage: "Dhikr du matin", categorie: "matin"},
+            
+            // Dua du soir
+            {id: 9, arabe: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ", transcription: "Amsaynā wa-amsā al-mulku lillāhi, wal-ḥamdu lillāhi, lā ilāha illā Allāhu waḥdahu lā sharīka lahu.", traduction: "Nous atteignons le soir et la souveraineté appartient à Allah. La louange est à Allah. Nulle divinité [véritable] en dehors d'Allah, l'Unique, sans associé.", source: "Muslim (n°2723)", usage: "À réciter chaque soir", categorie: "soir"},
+            {id: 10, arabe: "بِاسْمِكَ رَبِّ وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، إِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ", transcription: "Bismika rabbī waḍaʿtu janbī, wa bika arfaʿuhu, in amsakta nafsī farḥamhā, wa in arsaltahā faḥfaẓhā bimā taḥfaẓu bihi ʿibādaka aṣ-ṣāliḥīn.", traduction: "En Ton nom, mon Seigneur, je me couche et en Ton nom je me lève. Si Tu reprends mon âme, fais-lui miséricorde et si Tu la renvoies [dans mon corps], préserve-la comme Tu préserves Tes serviteurs vertueux.", source: "Al-Bukhârî (n°6320)", usage: "Avant de dormir", categorie: "soir"},
+            {id: 11, arabe: "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ", transcription: "Allāhumma qinī ʿadhābaka yawma tabʿathu ʿibādaka.", traduction: "Ô Allah, préserve-moi de Ton châtiment le jour où Tu ressusciteras Tes serviteurs.", source: "Abû Dâwud", usage: "Réciter 3 fois avant de dormir", categorie: "soir"},
+            {id: 12, arabe: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ غَضَبِهِ وَعِقَابِهِ وَشَرِّ عِبَادِهِ وَمِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَنْ يَحْضُرُونِ", transcription: "Aʿūdhu bikalimātillāhi at-tāmmāti min ghaḍabihi wa ʿiqābihi wa sharri ʿibādihi wa min hamazāti ash-shayāṭīni wa an yaḥḍurūn.", traduction: "Je cherche refuge auprès des paroles parfaites d'Allah contre Sa colère, Son châtiment, le mal de Ses serviteurs, contre les suggestions des diables et contre qu'ils ne soient présents.", source: "Abû Dâwud", usage: "En cas de cauchemar ou avant de dormir", categorie: "soir"},
+            {id: 13, arabe: "سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ وَلَا إِلَهَ إِلَّا اللَّهُ وَاللَّهُ أَكْبَرُ", transcription: "Subḥānallāhi wal-ḥamdu lillāhi wa lā ilāha illā Allāhu wallāhu akbar.", traduction: "Gloire à Allah, louange à Allah, il n'y a de divinité digne d'adoration qu'Allah, Allah est le plus grand.", source: "At-Tirmidhî", usage: "Réciter 33 fois avant de dormir", categorie: "soir"},
+            {id: 14, arabe: "اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا", transcription: "Allāhumma bismika amūtu wa aḥyā.", traduction: "Ô Allah, c'est en Ton nom que je meurs et que je vis.", source: "Al-Bukhârî", usage: "En se couchant", categorie: "soir"},
+            {id: 15, arabe: "اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَعَافِنِي وَاهْدِنِي وَارْزُقْنِي", transcription: "Allāhumma ighfir lī warḥamnī wa ʿāfinī wahdinī warzuqnī.", traduction: "Ô Allah, pardonne-moi, fais-moi miséricorde, préserve-moi, guide-moi et accorde-moi ma subsistance.", source: "At-Tirmidhî", usage: "En se couchant, pour se purifier", categorie: "soir"},
+            {id: 16, arabe: "اللَّهُمَّ احْفَظْنِي مِنْ بَيْنِ يَدَيَّ وَمِنْ خَلْفِي وَعَنْ يَمِينِي وَعَنْ شِمَالِي وَمِنْ فَوْقِي وَأَعُوذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِي", transcription: "Allāhumma uḥfaznī min bayni yadayya wa min khalfī wa ʿan yamīnī wa ʿan shimālī wa min fawqī wa aʿūdhu biʿaẓamatika an ughtāla min taḥtī.", traduction: "Ô Allah, préserve-moi de devant, de derrière, de ma droite, de ma gauche et du dessus. Et je cherche refuge auprès de Ta Grandeur pour ne pas être surpris par en dessous.", source: "Abû Dâwud", usage: "Protection nocturne complète", categorie: "soir"},
+            
+            // Dua pour la prière
+            {id: 17, arabe: "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ", transcription: "Subḥānaka allāhumma wa biḥamdika, wa tabāraka ismuka, wa taʿālā jadduka, wa lā ilāha ghayruka.", traduction: "Gloire à Toi, ô Allah, et à Toi la louange. Ton nom est béni, Ta majesté est exaltée et il n'y a pas d'autre divinité en dehors de Toi.", source: "At-Tirmidhî", usage: "Au début de la prière", categorie: "priere"},
+            {id: 18, arabe: "أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ", transcription: "Aʿūdhu billāhi min ash-shayṭāni ar-rajīm.", traduction: "Je cherche refuge auprès d'Allah contre Satan le maudit.", source: "Coran 16:98", usage: "Avant de réciter le Coran dans la prière", categorie: "priere"},
+            {id: 19, arabe: "سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ", transcription: "Samiʿa Allāhu liman ḥamidah.", traduction: "Allah entend celui qui Le loue.", source: "Al-Bukhârî", usage: "En se relevant de l'inclinaison", categorie: "priere"},
+            {id: 20, arabe: "رَبَّنَا وَلَكَ الْحَمْدُ", transcription: "Rabbana wa laka al-ḥamd.", traduction: "Notre Seigneur, à Toi la louange.", source: "Al-Bukhârî", usage: "Après s'être relevé de l'inclinaison", categorie: "priere"},
+            {id: 21, arabe: "سُبْحَانَ رَبِّيَ الْعَظِيمِ", transcription: "Subḥāna rabbiya al-ʿaẓīm.", traduction: "Gloire à mon Seigneur, le Très Grand.", source: "Muslim", usage: "Dans l'inclinaison (3 fois)", categorie: "priere"},
+            {id: 22, arabe: "سُبْحَانَ رَبِّيَ الْأَعْلَى", transcription: "Subḥāna rabbiya al-aʿlā.", traduction: "Gloire à mon Seigneur, le Très Haut.", source: "Muslim", usage: "Dans la prosternation (3 fois)", categorie: "priere"},
+            {id: 23, arabe: "اللَّهُمَّ اغْفِرْ لِي وَارْحَمْنِي وَاهْدِنِي وَعَافِنِي وَارْزُقْنِي", transcription: "Allāhumma ighfir lī warḥamnī wahdinī wa ʿāfinī warzuqnī.", traduction: "Ô Allah, pardonne-moi, fais-moi miséricorde, guide-moi, préserve-moi et accorde-moi ma subsistance.", source: "Abû Dâwud", usage: "Entre les deux prosternations", categorie: "priere"},
+            
+            // Dua pour les repas
+            {id: 24, arabe: "بِسْمِ اللَّهِ", transcription: "Bismillāh.", traduction: "Au nom d'Allah.", source: "Al-Bukhârî", usage: "Avant de manger", categorie: "repas"},
+            {id: 25, arabe: "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ", transcription: "Allāhumma bārik lanā fīmā razaqtanā wa qinā ʿadhāba an-nār.", traduction: "Ô Allah, bénis pour nous ce que Tu nous as accordé et préserve-nous du châtiment du Feu.", source: "Ibn Mâjah", usage: "Avant de manger", categorie: "repas"},
+            {id: 26, arabe: "الْحَمْدُ لِلَّهِ", transcription: "Al-ḥamdu lillāh.", traduction: "Louange à Allah.", source: "Abû Dâwud", usage: "Après avoir mangé", categorie: "repas"},
+            {id: 27, arabe: "الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنَا وَسَقَانَا وَجَعَلَنَا مُسْلِمِينَ", transcription: "Al-ḥamdu lillāhi alladhī aṭʿamanā wa saqānā wa jaʿalanā muslimīn.", traduction: "Louange à Allah qui nous a nourris, nous a abreuvés et a fait de nous des musulmans.", source: "Abû Dâwud", usage: "Après avoir mangé", categorie: "repas"},
+            {id: 28, arabe: "الْحَمْدُ لِلَّهِ حَمْدًا كَثِيرًا طَيِّبًا مُبَارَكًا فِيهِ", transcription: "Al-ḥamdu lillāhi ḥamdan kathīran ṭayyiban mubārakan fīhi.", traduction: "Louange à Allah, une louange abondante, pure et bénie.", source: "Al-Bukhârî", usage: "Après avoir mangé", categorie: "repas"},
+            {id: 29, arabe: "غَفَرَ اللَّهُ لَكَ", transcription: "Ghafarallāhu laka.", traduction: "Qu'Allah te pardonne.", source: "At-Tirmidhî", usage: "Quand quelqu'un éternue après avoir mangé", categorie: "repas"},
+            {id: 30, arabe: "يَرْحَمُكَ اللَّهُ", transcription: "Yarḥamukallāhu.", traduction: "Qu'Allah te fasse miséricorde.", source: "Al-Bukhârî", usage: "Réponse à celui qui éternue", categorie: "repas"},
+            
+            // Dua pour le voyage
+            {id: 31, arabe: "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ", transcription: "Subḥāna alladhī sakhkhara lanā hādhā wa mā kunnā lahu muqrinīna wa innā ilā rabbinā lamunqalibūn.", traduction: "Gloire à Celui qui nous a soumis ce (moyen de transport) alors que nous n'étions pas capables de le dominer. C'est vers notre Seigneur que nous retournerons.", source: "Coran 43:13", usage: "En montant dans un véhicule", categorie: "voyage"},
+            {id: 32, arabe: "اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ", transcription: "Allāhu akbar, Allāhu akbar, Allāhu akbar.", traduction: "Allah est le Plus Grand (3 fois).", source: "Muslim", usage: "Au début du voyage", categorie: "voyage"},
+            {id: 33, arabe: "اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ", transcription: "Allāhumma hawwin ʿalaynā safaranā hādhā wa-ṭwi ʿannā buʿdah.", traduction: "Ô Allah, facilite-nous ce voyage et raccourcis-nous la distance.", source: "Muslim", usage: "Au début du voyage", categorie: "voyage"},
+            {id: 34, arabe: "اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى", transcription: "Allāhumma innā nas'aluka fī safarinā hādhā al-birra wat-taqwā wa min al-ʿamali mā tarḍā.", traduction: "Ô Allah, nous Te demandons dans ce voyage la piété et la crainte, et des actes que Tu agrées.", source: "Muslim", usage: "Pendant le voyage", categorie: "voyage"},
+            {id: 35, arabe: "اللَّهُمَّ اصْحَبْنَا فِي سَفَرِنَا وَاخْلُفْنَا فِي أَهْلِنَا", transcription: "Allāhumma iṣḥabnā fī safarinā wakhlufnā fī ahlina.", traduction: "Ô Allah, accompagne-nous dans notre voyage et remplace-nous auprès de notre famille.", source: "At-Tirmidhî", usage: "Pour la protection de la famille durant le voyage", categorie: "voyage"},
+            {id: 36, arabe: "آيِبُونَ تَائِبُونَ عَابِدُونَ لِرَبِّنَا حَامِدُونَ", transcription: "Āyibūna tā'ibūna ʿābidūna li-rabbinā ḥāmidūn.", traduction: "Nous revenons repentants, adorant notre Seigneur et Le louant.", source: "Al-Bukhârî", usage: "Au retour du voyage", categorie: "voyage"},
+            {id: 37, arabe: "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ", transcription: "Lā ilāha illā Allāhu waḥdahu lā sharīka lahu, lahu al-mulku wa lahu al-ḥamdu wa huwa ʿalā kulli shay'in qadīr.", traduction: "Il n'y a de divinité digne d'adoration qu'Allah, Seul sans associé. À Lui la royauté, à Lui la louange et Il est Omnipotent.", source: "Al-Bukhârî", usage: "Réciter 100 fois en voyage", categorie: "voyage"},
+            
+            // Dua divers
+            {id: 38, arabe: "رَبِّ اغْفِرْ وَارْحَمْ وَأَنْتَ خَيْرُ الرَّاحِمِينَ", transcription: "Rabbighfir warḥam wa anta khayru ar-rāḥimīn.", traduction: "Seigneur, pardonne et fais miséricorde, Tu es le Meilleur des Miséricordieux.", source: "Coran 23:118", usage: "En toute circonstance", categorie: "divers"},
+            {id: 39, arabe: "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", transcription: "Lā ḥawla wa lā quwwata illā billāh.", traduction: "Il n'y a de force ni de puissance qu'en Allah.", source: "Al-Bukhârî", usage: "Face aux difficultés", categorie: "divers"},
+            {id: 40, arabe: "حَسْبِيَ اللَّهُ وَنِعْمَ الْوَكِيلُ", transcription: "Ḥasbiyallāhu wa niʿma al-wakīl.", traduction: "Allah me suffit et quel excellent Protecteur !", source: "Coran 3:173", usage: "Face à l'adversité", categorie: "divers"},
+            {id: 41, arabe: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ", transcription: "Allāhumma innī aʿūdhu bika min al-hammi wal-ḥazan.", traduction: "Ô Allah, je cherche refuge auprès de Toi contre l'angoisse et la tristesse.", source: "Al-Bukhârî", usage: "En cas de souci ou d'inquiétude", categorie: "divers"},
+            {id: 42, arabe: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ fī الدُّنْيَا وَالْآخِرَةِ", transcription: "Allāhumma innī as'aluka al-ʿafwa wal-ʿāfiyata fī ad-dunyā wal-ākhirah.", traduction: "Ô Allah, je Te demande le pardon et la préservation dans ce monde et dans l'au-delà.", source: "Ibn Mâjah", usage: "Pour la préservation générale", categorie: "divers"},
+            {id: 43, arabe: "يَا حَيُّ يَا قَيُّومُ بِرَحْمَتِكَ أَسْتَغِيثُ", transcription: "Yā ḥayyu yā qayyūmu bi-raḥmatika astaghīth.", traduction: "Ô Vivant, Ô Celui qui subsiste par Lui-même, c'est par Ta miséricorde que je sollicite Ton secours.", source: "At-Tirmidhî", usage: "En cas de détresse", categorie: "divers"},
+            {id: 44, arabe: "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ", transcription: "Allāhumma innī as'aluka al-jannata wa aʿūdhu bika min an-nār.", traduction: "Ô Allah, je Te demande le Paradis et je cherche refuge auprès de Toi contre l'Enfer.", source: "Abû Dâwud", usage: "Pour le salut dans l'au-delà", categorie: "divers"},
+            {id: 45, arabe: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ", transcription: "Rabbana ātinā fī ad-dunyā ḥasanatan wa fī al-ākhirati ḥasanatan wa qinā ʿadhāba an-nār.", traduction: "Seigneur, accorde-nous une belle part ici-bas, et une belle part dans l'au-delà, et protège-nous du châtiment du Feu.", source: "Coran 2:201", usage: "Pour le bien ici-bas et dans l'au-delà", categorie: "divers"}
+        ];
+
+        // Base de données des PDF
+        let pdfDatabase = [
+            {id: 1, title: "Dua Complet du Matin", description: "Tous les dua du matin avec leurs traductions et explications détaillées.", filename: "dua-matin.pdf", size: "2.5 MB", pages: "15"},
+            {id: 2, title: "Dua Complet du Soir", description: "Les invocations du soir et avant de dormir avec références authentiques.", filename: "dua-soir.pdf", size: "2.8 MB", pages: "18"},
+            {id: 3, title: "Guide des Dua pour la Prière", description: "Dua avant, pendant et après la prière avec les règles importantes.", filename: "dua-priere.pdf", size: "3.2 MB", pages: "22"},
+            {id: 4, title: "Dua des Repas et Nourriture", description: "Invocations avant/après manger et règles islamiques concernant la nourriture.", filename: "dua-repas.pdf", size: "1.8 MB", pages: "12"},
+            {id: 5, title: "Dua du Voyageur", description: "Invocations pour le voyage, départ, retour et protection en chemin.", filename: "dua-voyage.pdf", size: "2.1 MB", pages: "14"},
+            {id: 6, title: "Compilation Complète", description: "Tous les dua essentiels réunis dans un seul document organisé.", filename: "dua-complet.pdf", size: "5.4 MB", pages: "45"}
+        ];
+
+        // Gestion du menu mobile
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fonction pour obtenir un dua aléatoire
+        function getRandomDua() {
+            const randomIndex = Math.floor(Math.random() * duaDatabase.length);
+            return duaDatabase[randomIndex];
+        }
+
+        // Mettre à jour le Dua du jour
+        function updateDuaOfTheDay() {
+            const dua = getRandomDua();
+            
+            // Mettre à jour l'affichage
+            document.getElementById('duaArabe').textContent = dua.arabe;
+            document.getElementById('duaTranscription').textContent = dua.transcription;
+            document.getElementById('duaTraduction').textContent = `"${dua.traduction}"`;
+            document.querySelector('.dua-source').innerHTML = `<strong>Source :</strong> ${dua.source}`;
+            document.querySelector('.dua-usage').innerHTML = `<strong>Usage :</strong> ${dua.usage}`;
+            
+            // Stocker le dua du jour dans localStorage
+            const today = new Date().toDateString();
+            const duaOfTheDay = {
+                date: today,
+                dua: dua
+            };
+            localStorage.setItem('duaOfTheDay', JSON.stringify(duaOfTheDay));
+        }
+
+        // Vérifier si un dua du jour est déjà défini pour aujourd'hui
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedDua = JSON.parse(localStorage.getItem('duaOfTheDay'));
+            const today = new Date().toDateString();
+            
+            if (storedDua && storedDua.date === today) {
+                // Utiliser le dua stocké
+                document.getElementById('duaArabe').textContent = storedDua.dua.arabe;
+                document.getElementById('duaTranscription').textContent = storedDua.dua.transcription;
+                document.getElementById('duaTraduction').textContent = `"${storedDua.dua.traduction}"`;
+                document.querySelector('.dua-source').innerHTML = `<strong>Source :</strong> ${storedDua.dua.source}`;
+                document.querySelector('.dua-usage').innerHTML = `<strong>Usage :</strong> ${storedDua.dua.usage}`;
+            } else {
+                // Générer un nouveau dua du jour
+                updateDuaOfTheDay();
+            }
+
+            // Gestionnaire pour le bouton de partage
+            document.getElementById('partagerBtn').addEventListener('click', function() {
+                const duaText = document.getElementById('duaArabe').textContent;
+                const translation = document.getElementById('duaTraduction').textContent;
+                
+                const shareText = `Dua du jour:\n${duaText}\n\n${translation}\n\nPartagé via DuaGuide.com`;
+                
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Dua du jour - Dua Guide',
+                        text: shareText,
+                        url: window.location.href
+                    });
+                } else {
+                    // Fallback pour les navigateurs qui ne supportent pas l'API Web Share
+                    navigator.clipboard.writeText(shareText).then(() => {
+                        alert('Dua copié dans le presse-papier ! Vous pouvez maintenant le partager.');
+                    });
+                }
+            });
+
+            // Gestionnaire pour le bouton favori
+            document.getElementById('favoriBtn').addEventListener('click', function() {
+                const dua = {
+                    arabe: document.getElementById('duaArabe').textContent,
+                    traduction: document.getElementById('duaTraduction').textContent.replace(/^"|"$/g, ''),
+                    source: document.querySelector('.dua-source').textContent.replace('Source : ', ''),
+                    date: new Date().toLocaleDateString('fr-FR')
+                };
+                
+                let favorites = JSON.parse(localStorage.getItem('duaFavorites')) || [];
+                
+                // Vérifier si le dua est déjà dans les favoris
+                const isAlreadyFavorite = favorites.some(fav => 
+                    fav.arabe === dua.arabe && fav.traduction === dua.traduction
+                );
+                
+                if (!isAlreadyFavorite) {
+                    favorites.push(dua);
+                    localStorage.setItem('duaFavorites', JSON.stringify(favorites));
+                    alert('Dua ajouté aux favoris !');
+                    
+                    // Changer l'icône pour indiquer qu'il est en favori
+                    this.innerHTML = '<i class="fas fa-heart" style="color: #ff4757;"></i> Favori';
+                } else {
+                    alert('Ce dua est déjà dans vos favoris !');
+                }
+            });
+
+            // Gestionnaire pour le bouton audio
+            document.getElementById('audioBtn').addEventListener('click', function() {
+                alert('La fonctionnalité audio sera bientôt disponible ! Pour le moment, vous pouvez écouter la récitation en utilisant la transcription fournie.');
+            });
+
+            // Gestionnaire pour le bouton de recherche
+            document.getElementById('searchBtn').addEventListener('click', performSearch);
+            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Gestionnaire pour les boutons de téléchargement PDF
+            document.querySelectorAll('.btn-pdf[data-pdf]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const pdfName = this.getAttribute('data-pdf');
+                    alert(`Téléchargement du PDF "${pdfName}" démarré. Dans un site réel, cela téléchargerait le fichier PDF.`);
+                    
+                    // Simulation de téléchargement
+                    const link = document.createElement('a');
+                    link.href = `pdf/${pdfName}`;
+                    link.download = pdfName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            });
+
+            // Gestionnaire pour les boutons de téléchargement audio et vidéo
+            document.querySelectorAll('.btn-pdf[data-download]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const fileName = this.getAttribute('data-download');
+                    const title = this.closest('.pdf-card').querySelector('h3').textContent;
+                    
+                    alert(`Téléchargement de "${title}" démarré. Dans un site réel, cela téléchargerait le fichier ${fileName}.`);
+                    
+                    // Simulation de téléchargement
+                    const link = document.createElement('a');
+                    link.href = `media/${fileName}`;
+                    link.download = fileName;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+            });
+
+            // Gestionnaire pour les boutons audio du Coran
+            document.querySelectorAll('.btn-audio[data-audio]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const audioName = this.getAttribute('data-audio');
+                    const title = this.closest('.pdf-card').querySelector('h3').textContent;
+                    
+                    // Créer une fenêtre modale pour la lecture audio
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.8);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 2000;
+                    `;
+                    
+                    modal.innerHTML = `
+                        <div style="background: white; padding: 2rem; border-radius: 10px; max-width: 500px; width: 90%; text-align: center;">
+                            <h3 style="color: var(--vert-islamique); margin-bottom: 1rem;">${title}</h3>
+                            <p style="margin-bottom: 1.5rem; color: #666;">En développement - La fonctionnalité audio complète sera bientôt disponible</p>
+                            <div style="display: flex; gap: 1rem; justify-content: center;">
+                                <button class="btn btn-audio" style="background: var(--vert-clair);">
+                                    <i class="fas fa-play"></i> Simuler la lecture
+                                </button>
+                                <button class="btn" style="background: #666;" id="closeModal">
+                                    <i class="fas fa-times"></i> Fermer
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    // Gestionnaire pour fermer la modal
+                    modal.querySelector('#closeModal').addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                    });
+                    
+                    // Gestionnaire pour simuler la lecture
+                    modal.querySelector('.btn-audio').addEventListener('click', function() {
+                        alert('Lecture audio simulée. Dans la version finale, l\'audio commencerait à jouer.');
+                    });
+                    
+                    // Fermer en cliquant à l'extérieur
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+                });
+            });
+
+            // Gestionnaire pour les boutons vidéo de prêche
+            document.querySelectorAll('.btn-partage[data-video]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const videoName = this.getAttribute('data-video');
+                    const title = this.closest('.pdf-card').querySelector('h3').textContent;
+                    
+                    // Créer une fenêtre modale pour la vidéo
+                    const modal = document.createElement('div');
+                    modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0,0,0,0.9);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 2000;
+                    `;
+                    
+                    modal.innerHTML = `
+                        <div style="background: white; padding: 2rem; border-radius: 10px; max-width: 800px; width: 95%; text-align: center;">
+                            <h3 style="color: var(--vert-islamique); margin-bottom: 1rem;">${title}</h3>
+                            <div style="background: #000; height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; border-radius: 5px;">
+                                <i class="fas fa-video" style="font-size: 4rem; color: white;"></i>
+                            </div>
+                            <p style="margin-bottom: 1.5rem; color: #666;">Fonctionnalité vidéo en développement - L'intégration complète sera disponible prochainement</p>
+                            <div style="display: flex; gap: 1rem; justify-content: center;">
+                                <button class="btn btn-partage" style="background: var(--bleu-clair);">
+                                    <i class="fas fa-external-link-alt"></i> Ouvrir sur YouTube
+                                </button>
+                                <button class="btn" style="background: #666;" id="closeVideoModal">
+                                    <i class="fas fa-times"></i> Fermer
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    
+                    // Gestionnaire pour fermer la modal
+                    modal.querySelector('#closeVideoModal').addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                    });
+                    
+                    // Gestionnaire pour ouvrir YouTube
+                    modal.querySelector('.btn-partage').addEventListener('click', function() {
+                        alert('Redirection vers YouTube simulée. Dans la version finale, cela ouvrirait la vidéo sur YouTube.');
+                    });
+                    
+                    // Fermer en cliquant à l'extérieur
+                    modal.addEventListener('click', function(e) {
+                        if (e.target === modal) {
+                            document.body.removeChild(modal);
+                        }
+                    });
+                });
+            });
+
+            // Navigation fluide vers les ancres
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                    
+                    // Fermer le menu mobile si ouvert
+                    const navMenu = document.getElementById('navMenu');
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+
+            // Mettre en surbrillance la catégorie active lors du défilement
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('nav ul li a');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Gestionnaire pour le bouton admin
+            document.getElementById('admin-toggle').addEventListener('click', function() {
+                const adminSection = document.getElementById('admin-pdf-section');
+                const isVisible = adminSection.style.display === 'block';
+                
+                if (isVisible) {
+                    adminSection.style.display = 'none';
+                    this.textContent = 'Mode Admin';
+                } else {
+                    adminSection.style.display = 'block';
+                    this.textContent = 'Mode Admin (Actif)';
+                }
+            });
+
+            // Gestionnaire pour l'ajout de PDF
+            document.getElementById('select-pdf-btn').addEventListener('click', function() {
+                document.getElementById('pdf-upload').click();
+            });
+
+            document.getElementById('pdf-upload').addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    if (file.type === 'application/pdf') {
+                        document.getElementById('pdf-details-form').style.display = 'block';
+                        document.getElementById('pdf-title').value = file.name.replace('.pdf', '');
+                        document.getElementById('pdf-size').value = (file.size / (1024*1024)).toFixed(1) + ' MB';
+                    } else {
+                        alert('Veuillez sélectionner un fichier PDF.');
+                    }
+                }
+            });
+
+            document.getElementById('add-pdf-btn').addEventListener('click', function() {
+                const title = document.getElementById('pdf-title').value;
+                const description = document.getElementById('pdf-description').value;
+                const size = document.getElementById('pdf-size').value;
+                const pages = document.getElementById('pdf-pages').value;
+                const file = document.getElementById('pdf-upload').files[0];
+                
+                if (!title || !description || !size || !pages || !file) {
+                    alert('Veuillez remplir tous les champs.');
+                    return;
+                }
+                
+                // Ajouter le nouveau PDF à la base de données
+                const newPdf = {
+                    id: pdfDatabase.length + 1,
+                    title: title,
+                    description: description,
+                    filename: file.name,
+                    size: size,
+                    pages: pages
+                };
+                
+                pdfDatabase.push(newPdf);
+                
+                // Ajouter le nouveau PDF à l'affichage
+                const pdfGrid = document.querySelector('.pdf-grid');
+                const newPdfCard = document.createElement('div');
+                newPdfCard.className = 'pdf-card';
+                newPdfCard.innerHTML = `
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 style="color: var(--vert-islamique); margin-bottom: 10px;">${title}</h3>
+                    <p>${description}</p>
+                    <div class="pdf-info">
+                        <p><strong>Format :</strong> PDF</p>
+                        <p><strong>Taille :</strong> ${size}</p>
+                        <p><strong>Pages :</strong> ${pages}</p>
+                    </div>
+                    <button class="btn btn-pdf" data-pdf="${file.name}" style="margin-top: 15px; width: 100%;">
+                        <i class="fas fa-download"></i> Télécharger
+                    </button>
+                `;
+                
+                pdfGrid.appendChild(newPdfCard);
+                
+                // Réinitialiser le formulaire
+                document.getElementById('pdf-details-form').style.display = 'none';
+                document.getElementById('pdf-title').value = '';
+                document.getElementById('pdf-description').value = '';
+                document.getElementById('pdf-size').value = '';
+                document.getElementById('pdf-pages').value = '';
+                document.getElementById('pdf-upload').value = '';
+                
+                // Réattacher l'événement au nouveau bouton
+                newPdfCard.querySelector('.btn-pdf').addEventListener('click', function() {
+                    const pdfName = this.getAttribute('data-pdf');
+                    alert(`Téléchargement du PDF "${pdfName}" démarré.`);
+                });
+                
+                alert('PDF ajouté avec succès !');
+            });
+
+            // Initialiser la base de données des PDF dans localStorage
+            if (!localStorage.getItem('pdfDatabase')) {
+                localStorage.setItem('pdfDatabase', JSON.stringify(pdfDatabase));
+            } else {
+                pdfDatabase = JSON.parse(localStorage.getItem('pdfDatabase'));
+            }
+        });
+
+        // Fonction de recherche
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (!searchTerm) {
+                resultsContainer.innerHTML = '<p style="text-align: center; color: #666;">Veuillez entrer un terme de recherche.</p>';
+                return;
+            }
+            
+            // Filtrer les dua en fonction du terme de recherche
+            const filteredDuas = duaDatabase.filter(dua => {
+                return dua.traduction.toLowerCase().includes(searchTerm) ||
+                       dua.transcription.toLowerCase().includes(searchTerm) ||
+                       dua.categorie.toLowerCase().includes(searchTerm) ||
+                       dua.source.toLowerCase().includes(searchTerm) ||
+                       dua.usage.toLowerCase().includes(searchTerm);
+            });
+            
+            // Afficher les résultats
+            if (filteredDuas.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <p>Aucun résultat trouvé pour "${searchTerm}".</p>
+                        <p>Essayez avec d'autres mots-clés comme "matin", "soir", "protection", "repas", etc.</p>
+                    </div>
+                `;
+            } else {
+                let resultsHTML = `<h3 style="margin-bottom: 20px; color: var(--vert-islamique);">${filteredDuas.length} résultat(s) trouvé(s)</h3>`;
+                
+                filteredDuas.forEach(dua => {
+                    resultsHTML += `
+                        <div class="dua-item" style="margin-bottom: 15px;">
+                            <div class="dua-arabe" style="font-size: 1.3rem; text-align: right;">${dua.arabe}</div>
+                            <div class="dua-transcription" style="text-align: right;">${dua.transcription}</div>
+                            <div class="dua-traduction">
+                                <strong>Traduction :</strong> ${dua.traduction}
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.9rem;">
+                                <span><strong>Catégorie :</strong> ${dua.categorie}</span>
+                                <span><strong>Usage :</strong> ${dua.usage}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                resultsContainer.innerHTML = resultsHTML;
+            }
+        }
+
+        // Générer un nouveau dua du jour à minuit
+        function scheduleDuaUpdate() {
+            const now = new Date();
+            const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            const timeUntilMidnight = tomorrow - now;
+            
+            setTimeout(() => {
+                updateDuaOfTheDay();
+                // Programmer la prochaine mise à jour
+                scheduleDuaUpdate();
+            }, timeUntilMidnight);
+        }
+
+        // Démarrer le planning de mise à jour
+        scheduleDuaUpdate();
+    </script>
+</body>
+</html>
